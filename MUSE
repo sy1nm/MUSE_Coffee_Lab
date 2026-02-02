@@ -1,0 +1,44 @@
+const menuItems = [
+    { name: "美式咖啡", price: "20", image: "images/american-coffee.jpg" },
+    { name: "拿铁", price: "25", image: "images/latte.jpg" },
+    { name: "摩卡", price: "28", image: "images/mocha.jpg" },
+    { name: "卡布奇诺", price: "22", image: "images/cappuccino.jpg" },
+    { name: "抹茶拿铁", price: "30", image: "images/matcha-latte.jpg" },
+    { name: "浓缩咖啡", price: "18", image: "images/espresso.jpg" },
+    { name: "白咖啡", price: "26", image: "images/white-coffee.jpg" },
+    { name: "冰咖啡", price: "24", image: "images/iced-coffee.jpg" },
+    { name: "香草拿铁", price: "27", image: "images/vanilla-latte.jpg" },
+    { name: "榛果拿铁", price: "29", image: "images/hazelnut-latte.jpg" },
+    { name: "焦糖拿铁", price: "28", image: "images/caramel-latte.jpg" },
+    { name: "柠檬咖啡", price: "23", image: "images/lemon-coffee.jpg" },
+    { name: "花生奶咖", price: "31", image: "images/peanut-coffee.jpg" },
+    { name: "摩卡冰沙", price: "32", image: "images/mocha-frappuccino.jpg" },
+    { name: "椰子咖啡", price: "30", image: "images/coconut-coffee.jpg" },
+    { name: "牛奶咖啡", price: "21", image: "images/milk-coffee.jpg" },
+    { name: "提拉米苏咖啡", price: "35", image: "images/tiramisu-coffee.jpg" },
+    { name: "桂花咖啡", price: "29", image: "images/osmanthus-coffee.jpg" },
+    { name: "摩卡马奇朵", price: "26", image: "images/mocha-macchiato.jpg" },
+    { name: "巧克力咖啡", price: "28", image: "images/chocolate-coffee.jpg" },
+    { name: "冰镇法式咖啡", price: "27", image: "images/french-iced-coffee.jpg" }
+];
+
+function renderMenu() {
+    const menuList = document.getElementById('menu-list');
+    menuItems.forEach(item => {
+        const li = document.createElement('li');
+        const img = document.createElement('img');
+        img.src = item.image;
+        img.alt = item.name;
+        img.style.width = "100px";
+        img.style.height = "auto";
+        img.onerror = function() {
+            img.src = "images/default.jpg"; // 可设置默认占位图片
+        };
+
+        li.appendChild(img);
+        li.appendChild(document.createTextNode(` ${item.name} - ¥${item.price}`));
+        menuList.appendChild(li);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', renderMenu);
